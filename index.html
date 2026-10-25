@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field: all your classes in one place</title>
+<meta name="description" content="Field gathers your assignments, due dates, files and notes from email, Teams and your course platform into one place on your computer. Free, for Windows and Mac.">
+<meta property="og:title" content="Field: all your classes in one place">
+<meta property="og:description" content="Assignments, due dates, files and notes from everywhere, in one place on your computer. Free.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f2430'/%3E%3Cpath d='M10 9h12v3h-8.5v3.5H21v3h-7.5V23H10z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #eef1f6;
+  --bg2: #e4e8f0;
+  --card: #ffffff;
+  --text: #1f2430;
+  --muted: #6b7280;
+  --line: #e3e6ec;
+  --accent: #1f2430;
+  --accent-text: #ffffff;
+  --chip: #f2f4f8;
+  --due: #b45309;
+  --exam: #b91c1c;
+  --soft: rgba(255, 255, 255, 0.65);
+  --shadow: 0 1px 2px rgba(20, 24, 36, 0.05), 0 8px 30px rgba(20, 24, 36, 0.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171d;
+    --bg2: #1a1e26;
+    --card: #20252e;
+    --text: #eef0f4;
+    --muted: #9aa1ad;
+    --line: #2d333d;
+    --accent: #eef0f4;
+    --accent-text: #14171d;
+    --chip: #2a303a;
+    --due: #f59e0b;
+    --exam: #f87171;
+    --soft: rgba(32, 37, 46, 0.7);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%) fixed;
+  color: var(--text);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+html[data-lang="en"] [lang="fr"], html[data-lang="fr"] [lang="en"] { display: none !important; }
+a { color: inherit; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+/* top bar */
+header { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 19px; text-decoration: none; }
+.logo-mark { width: 30px; height: 30px; border-radius: 8px; background: var(--accent); color: var(--accent-text); display: grid; place-items: center; font-size: 16px; font-weight: 700; }
+.brand { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.built { font-size: 13.5px; color: var(--muted); text-decoration: none; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--soft); }
+.built b { color: #7c3aed; font-weight: 600; }
+.built:hover { border-color: var(--muted); }
+@media (prefers-color-scheme: dark) { .built b { color: #a78bfa; } }
+.top-links { display: flex; align-items: center; gap: 6px; }
+.lang { border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 14px; cursor: pointer; }
+.top-link { font-size: 14px; color: var(--muted); text-decoration: none; padding: 6px 10px; border-radius: 999px; }
+.top-link:hover { color: var(--text); background: var(--soft); }
+
+/* hero */
+.hero { text-align: center; padding: 48px 0 28px; }
+h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 16px; font-weight: 700; }
+.lead { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 640px; margin: 0 auto 28px; }
+.cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 12px; padding: 13px 22px; font-weight: 600; font-size: 16px; text-decoration: none; border: 1px solid transparent; cursor: pointer; font-family: inherit; }
+.btn-main { background: var(--accent); color: var(--accent-text); box-shadow: var(--shadow); }
+.btn-main:hover { opacity: 0.9; }
+.btn-ghost { background: var(--card); color: var(--text); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--muted); }
+.fine { font-size: 13.5px; color: var(--muted); margin-top: 12px; }
+
+/* the app mock */
+.shot { margin: 36px auto 0; max-width: 980px; border-radius: 18px; padding: 10px; background: var(--soft); box-shadow: var(--shadow); border: 1px solid var(--line); }
+.app { display: grid; grid-template-columns: 230px 1fr; gap: 10px; min-height: 430px; font-size: 13.5px; text-align: left; }
+.side { display: flex; flex-direction: column; gap: 8px; }
+.pane { background: var(--card); border-radius: 12px; padding: 8px; border: 1px solid var(--line); }
+.search { color: var(--muted); padding: 7px 10px; }
+.newbtn { text-align: center; background: var(--chip); border-radius: 8px; padding: 7px; font-weight: 600; margin-bottom: 6px; }
+.nav { padding: 6px 10px; border-radius: 8px; color: var(--text); display: flex; gap: 8px; align-items: center; }
+.nav.on { background: var(--chip); font-weight: 600; }
+.nav i { font-style: normal; width: 16px; text-align: center; color: var(--muted); display: inline-grid; place-items: center; }
+.nav em { font-style: normal; margin-left: auto; color: var(--muted); }
+.nav em.down { transform: rotate(90deg); }
+.grp { padding: 4px 10px 4px 34px; display: flex; align-items: center; gap: 8px; }
+.grp b { width: 7px; height: 7px; border-radius: 50%; flex: none; margin-left: -15px; }
+.grp.add { color: var(--muted); padding-left: 21px; }
+.grp .new { margin-left: auto; font-size: 11px; font-weight: 600; background: var(--chip); border-radius: 999px; padding: 1px 7px; white-space: nowrap; }
+.sec { color: var(--muted); padding: 4px 10px; font-size: 12.5px; }
+.cls { padding: 4px 10px 4px 22px; }
+.bell { margin-top: auto; }
+.bell b { font-weight: 600; }
+.main { background: var(--card); border-radius: 12px; border: 1px solid var(--line); padding: 26px 30px; overflow: hidden; }
+.main h3 { margin: 0; font-size: 20px; }
+.date { color: var(--muted); margin: 4px 0 12px; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 4px 11px; font-size: 12.5px; }
+.label { font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase; margin: 14px 0 6px; }
+.row { flex-wrap: wrap; display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; margin-bottom: 6px; }
+.row small { color: var(--muted); display: block; font-size: 12px; }
+.tag { font-size: 12px; font-weight: 600; white-space: nowrap; }
+.tag.due { color: var(--due); }
+.tag.exam { color: var(--exam); }
+.classes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.ccard { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.ccard small { color: var(--muted); display: block; font-size: 12px; }
+
+/* sections */
+section { padding: 56px 0 0; }
+h2 { font-size: clamp(26px, 4vw, 34px); letter-spacing: -0.015em; margin: 0 0 10px; text-align: center; }
+.sub { text-align: center; color: var(--muted); max-width: 620px; margin: 0 auto 28px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; box-shadow: var(--shadow); }
+.card .ico { font-size: 22px; margin-bottom: 8px; }
+.card h4 { margin: 0 0 6px; font-size: 17px; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+.steps { counter-reset: step; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.step { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.step::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--accent-text); font-weight: 700; margin-bottom: 10px; }
+.step h4 { margin: 0 0 6px; font-size: 17px; }
+.step p { margin: 0; color: var(--muted); font-size: 15px; }
+.note { max-width: 760px; margin: 18px auto 0; font-size: 14px; color: var(--muted); background: var(--soft); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.note b { color: var(--text); }
+.share { text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 36px 20px; box-shadow: var(--shadow); }
+footer { padding: 48px 0 36px; text-align: center; color: var(--muted); font-size: 14px; }
+footer a { color: var(--muted); }
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); opacity: 0; background: var(--accent); color: var(--accent-text); padding: 10px 16px; border-radius: 10px; font-size: 14px; transition: 0.25s; pointer-events: none; max-width: calc(100% - 32px); }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 860px) {
+  .grid, .steps { grid-template-columns: 1fr 1fr; }
+  .app { grid-template-columns: 1fr; }
+  .side .pane:not(.keep) { display: none; }
+  .bell { display: none; }
+  .classes { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .grid, .steps, .classes { grid-template-columns: 1fr; }
+  .top-link.hide-sm { display: none; }
+  .main { padding: 18px; }
+  .hero { padding-top: 28px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <a class="logo" href="#"><span class="logo-mark">F</span>Field</a>
+      <a class="built" href="https://obsidian.md" target="_blank" rel="noopener"><span lang="en">built on</span><span lang="fr">conçu avec</span> <b>Obsidian</b></a>
+    </div>
+    <nav class="top-links">
+      <a class="top-link hide-sm" href="#how"><span lang="en">Install</span><span lang="fr">Installer</span></a>
+      <button class="lang" id="lang" type="button" aria-label="Français / English"><span lang="en">FR</span><span lang="fr">EN</span></button>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1><span lang="en">All your classes.<br>One place.</span><span lang="fr">Tous vos cours.<br>Au même endroit.</span></h1>
+    <p class="lead">
+      <span lang="en">Assignments in your email, files on Teams, dates on the course platform… Field gathers all of it on your computer, and shows you what's due next.</span>
+      <span lang="fr">Des travaux dans vos courriels, des fichiers sur Teams, des dates sur la plateforme du cours… Field rassemble tout sur votre ordinateur et vous montre ce qui s'en vient.</span>
+    </p>
+    <div class="cta">
+      <a class="btn btn-main" data-download href="https://github.com/fieldprogram01-gif/field/releases/latest/download/Field.zip">
+        <span lang="en">Download Field, free</span><span lang="fr">Télécharger Field, gratuit</span>
+      </a>
+      <a class="btn btn-ghost" href="#how"><span lang="en">How to install</span><span lang="fr">Comment l'installer</span></a>
+    </div>
+    <p class="fine"><span lang="en">Windows and Mac · in English and French · <span data-version>version 0.68</span></span><span lang="fr">Windows et Mac · en français et en anglais · <span data-version>version 0.68</span></span></p>
+
+    <div class="shot" aria-hidden="true">
+      <div class="app">
+        <div class="side">
+          <div class="pane search"><span lang="en">Search</span><span lang="fr">Rechercher</span></div>
+          <div class="pane keep">
+            <div class="newbtn">+ <span lang="en">New</span><span lang="fr">Nouveau</span></div>
+            <div class="nav on"><i>⌂</i><span lang="en">Home</span><span lang="fr">Accueil</span></div>
+            <div class="nav"><i>▦</i>Agenda</div>
+            <div class="nav"><i>◎</i><span lang="en">My sources</span><span lang="fr">Mes sources</span><em>›</em></div>
+            <div class="nav"><i><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="6" cy="5.5" r="2.5"/><path d="M1.5 13.5c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4"/><path d="M10.5 3.2a2.5 2.5 0 0 1 0 4.6M12 9.8c1.6.5 2.5 1.8 2.5 3.7"/></svg></i><span lang="en">Groups</span><span lang="fr">Groupes</span><em class="down">›</em></div>
+            <div class="grp"><b style="background:#4f8a5b"></b><span lang="en">Bio study group</span><span lang="fr">Groupe d'étude bio</span><span class="new"><span lang="en">2 new</span><span lang="fr">2 nouv.</span></span></div>
+            <div class="grp"><b style="background:#4a6fa5"></b><span lang="en">Chem lab team</span><span lang="fr">Équipe labo chimie</span></div>
+            <div class="grp add">+ <span lang="en">New group</span><span lang="fr">Nouveau groupe</span></div>
+            <div class="nav"><i>⋯</i><span lang="en">More</span><span lang="fr">Plus</span></div>
+          </div>
+          <div class="pane">
+            <div class="sec"><span lang="en">Classes</span><span lang="fr">Cours</span></div>
+            <div class="cls"><span lang="en">Biology</span><span lang="fr">Biologie</span></div>
+            <div class="cls"><span lang="en">Chemistry</span><span lang="fr">Chimie</span></div>
+            <div class="cls"><span lang="en">History</span><span lang="fr">Histoire</span></div>
+          </div>
+          <div class="pane bell">
+            <div class="sec"><b>2</b> Notifications</div>
+            <div class="cls"><span lang="en">lab-instructions.pdf</span><span lang="fr">consignes-labo.pdf</span></div>
+            <div class="cls"><span lang="en">Week 7 slides.pptx</span><span lang="fr">Diapos semaine 7.pptx</span></div>
+          </div>
+        </div>
+        <div class="main">
+          <h3><span lang="en">Home</span><span lang="fr">Accueil</span></h3>
+          <div class="date"><span lang="en">Monday, October 19</span><span lang="fr">lundi 19 octobre</span></div>
+          <div class="chips"><span class="chip"><b>3</b> <span lang="en">due this week</span><span lang="fr">à remettre cette semaine</span></span></div>
+          <div class="label"><span lang="en">Coming up</span><span lang="fr">À venir</span></div>
+          <div class="row"><div><span lang="en">Lab report 3</span><span lang="fr">Rapport de labo 3</span><small><span lang="en">Chemistry</span><span lang="fr">Chimie</span></small></div><span class="tag due"><span lang="en">Due Wednesday</span><span lang="fr">À remettre mercredi</span></span></div>
+          <div class="row"><div><span lang="en">Midterm</span><span lang="fr">Examen intra</span><small><span lang="en">Biology</span><span lang="fr">Biologie</span></small></div><span class="tag exam"><span lang="en">Exam Thursday</span><span lang="fr">Examen jeudi</span></span></div>
+          <div class="row"><div><span lang="en">Essay, first draft</span><span lang="fr">Dissertation, premier jet</span><small><span lang="en">History</span><span lang="fr">Histoire</span></small></div><span class="tag due"><span lang="en">Due Friday</span><span lang="fr">À remettre vendredi</span></span></div>
+          <div class="label"><span lang="en">Classes</span><span lang="fr">Cours</span></div>
+          <div class="classes">
+            <div class="ccard"><b><span lang="en">Biology</span><span lang="fr">Biologie</span></b><small><span lang="en">12 notes or files</span><span lang="fr">12 notes ou fichiers</span></small></div>
+            <div class="ccard"><b><span lang="en">Chemistry</span><span lang="fr">Chimie</span></b><small><span lang="en">8 notes or files</span><span lang="fr">8 notes ou fichiers</span></small></div>
+            <div class="ccard"><b><span lang="en">History</span><span lang="fr">Histoire</span></b><small><span lang="en">5 notes or files</span><span lang="fr">5 notes ou fichiers</span></small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h2><span lang="en">Stop checking five places</span><span lang="fr">Arrêtez de vérifier cinq endroits</span></h2>
+    <p class="sub"><span lang="en">Every teacher and every class does it differently. Field doesn't replace any of it: it's the one place you check.</span><span lang="fr">Chaque prof et chaque cours fait à sa façon. Field ne remplace rien de tout ça : c'est le seul endroit à vérifier.</span></p>
+    <div class="grid">
+      <div class="card"><div class="ico">📅</div>
+        <h4><span lang="en">See what's due</span><span lang="fr">Voyez ce qui s'en vient</span></h4>
+        <p><span lang="en">Home lists every due date and exam, soonest first. Nothing to sort by hand.</span><span lang="fr">L'Accueil montre chaque remise et chaque examen, le plus proche en premier. Rien à trier à la main.</span></p></div>
+      <div class="card"><div class="ico">🌐</div>
+        <h4><span lang="en">Your sources, side by side</span><span lang="fr">Vos sources, côte à côte</span></h4>
+        <p><span lang="en">Outlook, Gmail, Teams and your course platform open right in Field. Sign in once; what you download goes straight to your Inbox.</span><span lang="fr">Outlook, Gmail, Teams et la plateforme du cours s'ouvrent dans Field. Connectez-vous une fois; ce que vous téléchargez va directement dans la boîte de réception.</span></p></div>
+      <div class="card"><div class="ico">📥</div>
+        <h4><span lang="en">Catch it, file it later</span><span lang="fr">Attrapez, classez plus tard</span></h4>
+        <p><span lang="en">Drop a file or a link on the Inbox, even from the Windows taskbar. One click puts it in the right class.</span><span lang="fr">Déposez un fichier ou un lien dans la boîte de réception, même depuis la barre des tâches de Windows. Un clic le range dans le bon cours.</span></p></div>
+      <div class="card"><div class="ico">🗓️</div>
+        <h4><span lang="en">Plan when you'll do it</span><span lang="fr">Planifiez quand le faire</span></h4>
+        <p><span lang="en">Your week in blocks. Tasks with a date land on the calendar; drag them to a free time. Your Google or Outlook calendar can show too.</span><span lang="fr">Votre semaine en blocs. Les tâches datées arrivent dans l'agenda; glissez-les vers un moment libre. Votre agenda Google ou Outlook peut s'afficher aussi.</span></p></div>
+      <div class="card"><div class="ico">🎓</div>
+        <h4><span lang="en">One page per class</span><span lang="fr">Une page par cours</span></h4>
+        <p><span lang="en">Notes, files, projects and dates for each class, in one place. Start a new semester when this one ends.</span><span lang="fr">Notes, fichiers, projets et dates de chaque cours, au même endroit. Commencez une nouvelle session quand celle-ci finit.</span></p></div>
+      <div class="card"><div class="ico">🔒</div>
+        <h4><span lang="en">Your notes stay yours</span><span lang="fr">Vos notes restent à vous</span></h4>
+        <p><span lang="en">Everything is saved as ordinary files on your computer. It works offline, with no account.</span><span lang="fr">Tout est enregistré en fichiers ordinaires sur votre ordinateur. Ça marche hors ligne, sans compte.</span></p></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2><span lang="en">Ready in five minutes</span><span lang="fr">Prêt en cinq minutes</span></h2>
+    <p class="sub"><span lang="en">The installer sets everything up, then a short tour shows you around.</span><span lang="fr">L'installation s'occupe de tout, puis une courte visite guidée vous montre l'essentiel.</span></p>
+    <div class="steps">
+      <div class="step">
+        <h4><span lang="en">Download and extract</span><span lang="fr">Téléchargez et extrayez</span></h4>
+        <p><span lang="en">Windows: right-click the .zip › Extract All. Mac: double-click it.</span><span lang="fr">Windows : clic droit sur le .zip › Extraire tout. Mac : double-cliquez dessus.</span></p></div>
+      <div class="step">
+        <h4><span lang="en">Run the installer</span><span lang="fr">Lancez l'installation</span></h4>
+        <p><span lang="en">Double-click "Windows - Installer Field" or "Mac - Installer Field". It installs Obsidian if needed.</span><span lang="fr">Double-cliquez sur « Windows - Installer Field » ou « Mac - Installer Field ». Elle installe Obsidian au besoin.</span></p></div>
+      <div class="step">
+        <h4><span lang="en">Add your classes</span><span lang="fr">Ajoutez vos cours</span></h4>
+        <p><span lang="en">In Obsidian, click "Trust author and enable plugins". Answer two questions, add your classes, and you're set.</span><span lang="fr">Dans Obsidian, cliquez sur « Faire confiance à l'auteur et activer les modules ». Répondez à deux questions, ajoutez vos cours, et c'est parti.</span></p></div>
+    </div>
+    <div class="note">
+      <span lang="en"><b>Windows warns you?</b> Field is new, so Windows doesn't know it yet. Click <b>More info › Run anyway</b>. <b>On a Mac</b>, the first time: System Settings › Privacy &amp; Security › <b>Open Anyway</b>. The READ ME in the .zip has every step.</span>
+      <span lang="fr"><b>Windows vous avertit?</b> Field est nouveau, alors Windows ne le connaît pas encore. Cliquez sur <b>Informations complémentaires › Exécuter quand même</b>. <b>Sur Mac</b>, la première fois : Réglages Système › Confidentialité et sécurité › <b>Ouvrir quand même</b>. Le LISEZ-MOI dans le .zip donne chaque étape.</span>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="share">
+      <h2><span lang="en">Know someone drowning in deadlines?</span><span lang="fr">Quelqu'un croule sous les remises?</span></h2>
+      <p class="sub"><span lang="en">Field grows by word of mouth. Send this page to a classmate.<br>Questions? Ask in <b>#questions</b> on Field's Discord.</span><span lang="fr">Field grandit grâce au bouche-à-oreille. Envoyez cette page à un ami de classe.<br>Des questions? Posez-les dans <b>#questions</b> sur le Discord de Field.</span></p>
+      <div class="cta">
+        <button class="btn btn-main" id="share" type="button"><span lang="en">Share Field</span><span lang="fr">Partager Field</span></button>
+        <a class="btn btn-ghost" data-discord href="https://discord.gg/wEbPdCSRbU"><span lang="en">Join the Discord</span><span lang="fr">Rejoindre le Discord</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span lang="en">Made by a student, for students.</span><span lang="fr">Fait pour les étudiants, par quelqu'un qui étudie aussi.</span>
+    · <a data-discord href="https://discord.gg/wEbPdCSRbU">Discord</a>
+    · <a href="privacy.html"><span lang="en">Privacy</span><span lang="fr">Confidentialité</span></a>
+    <br><span lang="en">Free, no account. Your notes stay on your computer; Field sends only anonymous usage stats (you can turn them off in Settings › Field), and the study groups you choose to share go through your own Google Drive.</span><span lang="fr">Gratuit, sans compte. Vos notes restent sur votre ordinateur; Field envoie seulement des statistiques d'utilisation anonymes (vous pouvez les arrêter dans Paramètres › Field), et les groupes d'étude que vous décidez de partager passent par votre propre Google Drive.</span>
+    <br><span lang="en">Field runs on Obsidian; it isn't made by Obsidian.</span><span lang="fr">Field fonctionne avec Obsidian; il n'est pas fait par Obsidian.</span>
+  </footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function setLang(l) {
+    root.setAttribute("data-lang", l);
+    root.setAttribute("lang", l);
+    document.title = l === "fr" ? "Field : tous vos cours au même endroit" : "Field: all your classes in one place";
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("field-lang"); } catch (e) {}
+  setLang(saved || ((navigator.language || "").toLowerCase().indexOf("fr") === 0 ? "fr" : "en"));
+  document.getElementById("lang").addEventListener("click", function () {
+    var l = root.getAttribute("data-lang") === "fr" ? "en" : "fr";
+    setLang(l);
+    try { localStorage.setItem("field-lang", l); } catch (e) {}
+  });
+
+  var toast = document.getElementById("toast"), timer;
+  function say(text) {
+    toast.textContent = text;
+    toast.classList.add("show");
+    clearTimeout(timer);
+    timer = setTimeout(function () { toast.classList.remove("show"); }, 3500);
+  }
+  document.getElementById("share").addEventListener("click", function () {
+    var fr = root.getAttribute("data-lang") === "fr";
+    var url = location.origin + location.pathname;
+    var text = fr ? "J'utilise Field pour organiser mes cours : notes, tâches et remises au même endroit. C'est gratuit : "
+                  : "I use Field to organize my classes: notes, tasks and deadlines in one place. It's free: ";
+    if (navigator.share) { navigator.share({ title: "Field", text: text, url: url }).catch(function () {}); return; }
+    var copied = function () { say(fr ? "Message copié : collez-le à un ami." : "Message copied: paste it to a classmate."); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text + url).then(copied, function () { say(text + url); });
+    else say(text + url);
+  });
+
+  // the Discord link and the version come from Field's news (the same Gist Field reads)
+  fetch("https://gist.githubusercontent.com/fieldprogram01-gif/97a0038e2ff89ab4e410e23e7ee7b77e/raw/field-news.json?t=" + Date.now())
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (news) {
+      if (!news) return;
+      if (/^https:\/\/(discord\.gg|discord\.com\/invite)\/[\w-]+$/.test(news.discord || ""))
+        document.querySelectorAll("[data-discord]").forEach(function (a) { a.href = news.discord; });
+      if (/^\d+(\.\d+)*$/.test(news.latest || ""))
+        document.querySelectorAll("[data-version]").forEach(function (s) { s.textContent = "version " + news.latest.replace(/\.0$/, ""); });
+    })
+    .catch(function () {});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field: privacy policy</title>
+<meta name="description" content="What Field does with your data: your notes stay on your computer, Google Drive is only used for the study groups you share, and the usage stats are anonymous.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f2430'/%3E%3Cpath d='M10 9h12v3h-8.5v3.5H21v3h-7.5V23H10z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #eef1f6;
+  --bg2: #e4e8f0;
+  --card: #ffffff;
+  --text: #1f2430;
+  --muted: #6b7280;
+  --line: #e3e6ec;
+  --accent: #1f2430;
+  --accent-text: #ffffff;
+  --chip: #f2f4f8;
+  --soft: rgba(255, 255, 255, 0.65);
+  --shadow: 0 1px 2px rgba(20, 24, 36, 0.05), 0 8px 30px rgba(20, 24, 36, 0.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171d;
+    --bg2: #1a1e26;
+    --card: #20252e;
+    --text: #eef0f4;
+    --muted: #9aa1ad;
+    --line: #2d333d;
+    --accent: #eef0f4;
+    --accent-text: #14171d;
+    --chip: #2a303a;
+    --soft: rgba(32, 37, 46, 0.7);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%) fixed;
+  color: var(--text);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+html[data-lang="en"] [lang="fr"], html[data-lang="fr"] [lang="en"] { display: none !important; }
+a { color: inherit; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+/* top bar (same as the landing page) */
+header { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 19px; text-decoration: none; }
+.logo-mark { width: 30px; height: 30px; border-radius: 8px; background: var(--accent); color: var(--accent-text); display: grid; place-items: center; font-size: 16px; font-weight: 700; }
+.top-links { display: flex; align-items: center; gap: 6px; }
+.lang { border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 14px; cursor: pointer; }
+.top-link { font-size: 14px; color: var(--muted); text-decoration: none; padding: 6px 10px; border-radius: 999px; }
+.top-link:hover { color: var(--text); background: var(--soft); }
+
+/* the policy */
+.doc { max-width: 760px; margin: 12px auto 0; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 40px 44px; box-shadow: var(--shadow); }
+h1 { font-size: clamp(30px, 5vw, 42px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 8px; }
+.updated { color: var(--muted); font-size: 14px; margin: 0 0 24px; }
+h2 { font-size: 21px; letter-spacing: -0.01em; margin: 34px 0 8px; }
+p, li { color: var(--text); }
+ul { padding-left: 22px; margin: 8px 0; }
+li { margin: 4px 0; }
+.muted { color: var(--muted); }
+.short { background: var(--chip); border-radius: 14px; padding: 18px 22px; }
+.short ul { margin: 0; }
+code { background: var(--chip); border-radius: 6px; padding: 1px 6px; font-size: 14px; }
+footer { padding: 36px 0; text-align: center; color: var(--muted); font-size: 14px; }
+footer a { color: var(--muted); }
+
+@media (max-width: 560px) {
+  .doc { padding: 26px 20px; border-radius: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="./"><span class="logo-mark">F</span>Field</a>
+    <nav class="top-links">
+      <a class="top-link" href="./"><span lang="en">Home</span><span lang="fr">Accueil</span></a>
+      <button class="lang" id="lang" type="button" aria-label="Français / English"><span lang="en">FR</span><span lang="fr">EN</span></button>
+    </nav>
+  </header>
+
+  <!-- ENGLISH -->
+  <main class="doc" lang="en">
+    <h1>Privacy policy</h1>
+    <p class="updated">Last updated October 24, 2026</p>
+
+    <p>Field is a free app for students, made by one student. It runs inside Obsidian, on your computer. This page
+      explains exactly what Field keeps, what it sends, and to whom.</p>
+
+    <div class="short">
+      <ul>
+        <li>Your notes and files stay on your computer, as ordinary files.</li>
+        <li>Google Drive is only used for the study groups you share. Field only sees the group files it made or
+          that you picked, never the rest of your Drive.</li>
+        <li>Field has no server. Group files go straight between your computer and Google Drive.</li>
+        <li>The usage stats are anonymous, and you can turn them off.</li>
+        <li>No ads. Nothing is sold. Nothing is used to train AI.</li>
+      </ul>
+    </div>
+
+    <h2>What stays on your computer</h2>
+    <p>Everything you put in Field: notes, projects, files, classes, due dates, your Agenda and your settings. They
+      are saved in your Field folder (an Obsidian vault) and never leave your computer, unless you add them to a
+      study group yourself (see below) or you sync the folder with your own tools.</p>
+    <p>The websites you open in <b>My sources</b> (Outlook, Gmail, Teams, your course platform…) work like a web
+      browser inside Obsidian. Your sign-ins to them stay on your computer, and Field doesn't read or send what's
+      on those pages. The files you download there go to your Inbox, on your computer.</p>
+
+    <h2>Google Drive, for study groups</h2>
+    <p>Groups are optional. If you share a group or join one, Field asks to connect your Google account, with
+      Google's most limited access to Drive (<code>drive.file</code>). With it, Field can only open the files it
+      made or that you picked in Google's window. It cannot see, read or change anything else in your Drive.</p>
+    <p>With that access, Field:</p>
+    <ul>
+      <li>reads your Google name and email address, to show "Connected as…" and to recognize you among a group's
+        members;</li>
+      <li>creates one file per group you share in your Drive (the group's "binder"), holding the notes, canvases and
+        files you added to that group;</li>
+      <li>shares that file, as editor or view-only, with the email addresses you type in "Invite";</li>
+      <li>reads and updates the binders of your groups (yours, and the ones you picked in "Join a group") to keep
+        everyone's copy up to date;</li>
+      <li>reads who a binder is shared with (names, email addresses and roles), to show a group's members;</li>
+      <li>while you have a group's note open, writes a small label on that group's binder (your name, which note,
+        and the time), so the other members see "… is editing this note".</li>
+    </ul>
+    <p>The data goes only between your computer and Google. Field has no server of its own, and the developer
+      never sees your Google data, your groups or their files. The members of a group see what's in that group,
+      and the people it's shared with, because you or its owner shared it with them.</p>
+    <p>Your connection key is kept on your computer, encrypted by your system (Windows or macOS). To disconnect:
+      <b>Settings › Field › Google Drive › Disconnect</b>. To remove Field's access completely, go to
+      <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">your Google account's
+      connections</a> and remove Field. Leaving or deleting a group stops its sync; the binders you made stay in
+      your Drive until you delete them there.</p>
+    <p><b>Field's use and transfer of information received from Google APIs to any other app will adhere to the
+      <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google
+      API Services User Data Policy</a>, including the Limited Use requirements.</b> In plain words: Google data is
+      only used to run your study groups, it is never sold or used for ads, it is never used to train AI, and no
+      person reads it.</p>
+
+    <h2>Anonymous usage stats</h2>
+    <p>To know what to improve first, Field sends a short line to a Google Form now and then (when it starts, then
+      at most once an hour). It contains only:</p>
+    <ul>
+      <li>the date;</li>
+      <li>Field's version, its language, and Windows or Mac;</li>
+      <li>which features were used that day, like "agenda", "new note" or "search" (only the feature, never what
+        you searched or wrote);</li>
+      <li>whether it's that computer's first use that day, week or month, or its very first day, to count active
+        users.</li>
+    </ul>
+    <p>There is no name, email, account, id of any kind, note, file name or text in it, so a line can't be linked to
+      you or to another line. To turn it off: <b>Settings › Field › Anonymous usage stats</b>. When it's off, Field
+      doesn't keep or send anything.</p>
+
+    <h2>Ideas and problems you send</h2>
+    <p><b>More › Send an idea or a problem</b> sends what you write to a Google Form, with Field's version, its
+      language and Windows or Mac. Your email address is sent only if you type it, so we can answer you. Only the
+      developer reads these.</p>
+
+    <h2>Field's news</h2>
+    <p>When it starts, Field downloads a small public file from GitHub with Field's news: the newest version, the
+      Discord link and short messages. Nothing about you is sent. Like any website, GitHub can see your computer's
+      internet address when the file is downloaded.</p>
+
+    <h2>Obsidian, Google and GitHub</h2>
+    <p>Field runs on <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian</a>, which has its own
+      <a href="https://obsidian.md/privacy" target="_blank" rel="noopener">privacy policy</a>. The forms and Drive
+      are Google's (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy
+      policy</a>); this website and the news are hosted by GitHub
+      (<a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's
+      privacy statement</a>).</p>
+    <p>This website uses no cookies and no trackers. It only remembers the language you picked, in your
+      browser.</p>
+
+    <h2>Who sees your data</h2>
+    <p>Only the developer sees the form answers (the stats and what you send). They are never sold, rented or shared
+      with anyone, and never used for ads. Field has no ads.</p>
+
+    <h2>Deleting your data</h2>
+    <ul>
+      <li>Your notes and files: they're your files, on your computer. Delete them whenever you want.</li>
+      <li>Your groups: delete the binders in your Google Drive, and remove Field from your Google account's
+        connections.</li>
+      <li>An idea or problem you sent: ask on Field's Discord or by email (below), and it will be deleted. The stats can't be
+        found again, because nothing links them to you.</li>
+    </ul>
+
+    <h2>Changes and contact</h2>
+    <p>If this policy changes, the new version will be on this page, with its date at the top. Questions? Ask in
+      <b>#questions</b> on <a data-discord href="https://discord.gg/wEbPdCSRbU">Field's Discord</a>, use
+      <b>More › Send an idea or a problem</b> in Field, or write to
+      <a href="mailto:fieldprogram01@gmail.com">fieldprogram01@gmail.com</a>.</p>
+  </main>
+
+  <!-- FRANÇAIS -->
+  <main class="doc" lang="fr">
+    <h1>Politique de confidentialité</h1>
+    <p class="updated">Dernière mise à jour : 24 octobre 2026</p>
+
+    <p>Field est une application gratuite pour les étudiants, faite par un étudiant. Elle fonctionne dans Obsidian,
+      sur votre ordinateur. Cette page explique exactement ce que Field garde, ce qu'il envoie, et à qui.</p>
+
+    <div class="short">
+      <ul>
+        <li>Vos notes et vos fichiers restent sur votre ordinateur, en fichiers ordinaires.</li>
+        <li>Google Drive sert seulement aux groupes d'étude que vous partagez. Field voit seulement les fichiers de
+          groupe qu'il a créés ou que vous avez choisis, jamais le reste de votre Drive.</li>
+        <li>Field n'a pas de serveur. Les fichiers des groupes vont directement de votre ordinateur à Google Drive.</li>
+        <li>Les statistiques d'utilisation sont anonymes, et vous pouvez les arrêter.</li>
+        <li>Pas de publicité. Rien n'est vendu. Rien ne sert à entraîner une IA.</li>
+      </ul>
+    </div>
+
+    <h2>Ce qui reste sur votre ordinateur</h2>
+    <p>Tout ce que vous mettez dans Field : notes, projets, fichiers, cours, remises, votre Agenda et vos
+      paramètres. Ils sont enregistrés dans votre dossier Field (un coffre Obsidian) et ne quittent jamais votre
+      ordinateur, sauf si vous les ajoutez vous-même à un groupe d'étude (voir plus bas) ou si vous synchronisez le
+      dossier avec vos propres outils.</p>
+    <p>Les sites que vous ouvrez dans <b>Mes sources</b> (Outlook, Gmail, Teams, la plateforme du cours…)
+      fonctionnent comme un navigateur dans Obsidian. Vos connexions à ces sites restent sur votre ordinateur, et
+      Field ne lit pas et n'envoie pas ce qui est sur ces pages. Les fichiers que vous y téléchargez vont dans votre
+      boîte de réception, sur votre ordinateur.</p>
+
+    <h2>Google Drive, pour les groupes d'étude</h2>
+    <p>Les groupes sont facultatifs. Si vous partagez un groupe ou en rejoignez un, Field demande de connecter votre
+      compte Google, avec l'accès à Drive le plus limité qu'offre Google (<code>drive.file</code>). Avec cet accès,
+      Field peut seulement ouvrir les fichiers qu'il a créés ou que vous avez choisis dans la fenêtre de Google. Il
+      ne peut rien voir, lire ou modifier d'autre dans votre Drive.</p>
+    <p>Avec cet accès, Field :</p>
+    <ul>
+      <li>lit votre nom et votre adresse courriel Google, pour afficher « Connecté en tant que… » et vous reconnaître
+        parmi les membres d'un groupe;</li>
+      <li>crée dans votre Drive un fichier par groupe que vous partagez (le « cartable » du groupe), qui contient les
+        notes, les canevas et les fichiers ajoutés à ce groupe;</li>
+      <li>partage ce fichier, en modification ou en lecture seule, avec les adresses courriel que vous écrivez dans
+        « Inviter »;</li>
+      <li>lit et met à jour les cartables de vos groupes (les vôtres, et ceux choisis dans « Rejoindre un groupe »)
+        pour garder la copie de chacun à jour;</li>
+      <li>lit avec qui un cartable est partagé (noms, adresses courriel et rôles), pour afficher les membres d'un
+        groupe;</li>
+      <li>pendant qu'une note de groupe est ouverte, écrit une petite étiquette sur le cartable de ce groupe (votre
+        nom, quelle note, et l'heure), pour que les autres membres voient « … modifie cette note ».</li>
+    </ul>
+    <p>Les données vont seulement entre votre ordinateur et Google. Field n'a aucun serveur à lui, et le
+      développeur ne voit jamais vos données Google, vos groupes ni leurs fichiers. Les membres d'un groupe voient
+      ce qu'il contient, et les personnes avec qui il est partagé, parce que vous ou son propriétaire le leur avez
+      partagé.</p>
+    <p>Votre clé de connexion est gardée sur votre ordinateur, chiffrée par votre système (Windows ou macOS). Pour
+      déconnecter : <b>Paramètres › Field › Google Drive › Déconnecter</b>. Pour retirer complètement l'accès de
+      Field, allez dans <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">les
+      connexions de votre compte Google</a> et retirez Field. Quitter ou supprimer un groupe arrête sa
+      synchronisation; les cartables que vous avez créés restent dans votre Drive jusqu'à ce que vous les y
+      supprimiez.</p>
+    <p><b>L'utilisation et le transfert à toute autre application, par Field, des informations reçues des API de
+      Google respectent les <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">règles
+      sur les données des utilisateurs des services d'API Google</a> (Google API Services User Data Policy), y
+      compris les exigences d'utilisation limitée (Limited Use).</b> En clair : les données Google servent seulement à
+      faire fonctionner vos groupes d'étude; elles ne sont jamais vendues ni utilisées pour de la publicité, ne
+      servent jamais à entraîner une IA, et personne ne les lit.</p>
+
+    <h2>Statistiques d'utilisation anonymes</h2>
+    <p>Pour savoir quoi améliorer en premier, Field envoie de temps en temps une courte ligne à un formulaire Google
+      (au démarrage, puis au plus une fois par heure). Elle contient seulement :</p>
+    <ul>
+      <li>la date;</li>
+      <li>la version de Field, sa langue, et Windows ou Mac;</li>
+      <li>les fonctions utilisées ce jour-là, comme « agenda », « nouvelle note » ou « recherche » (seulement la
+        fonction, jamais ce que vous avez cherché ou écrit);</li>
+      <li>s'il s'agit de la première utilisation de cet ordinateur ce jour-là, cette semaine ou ce mois-ci, ou de son
+        tout premier jour, pour compter les utilisateurs actifs.</li>
+    </ul>
+    <p>Elle ne contient aucun nom, courriel, compte, identifiant d'aucune sorte, note, nom de fichier ni texte : une
+      ligne ne peut donc pas être reliée à vous ni à une autre ligne. Pour l'arrêter : <b>Paramètres › Field ›
+      Statistiques d'utilisation anonymes</b>. Quand c'est arrêté, Field ne garde et n'envoie rien.</p>
+
+    <h2>Les idées et les problèmes que vous envoyez</h2>
+    <p><b>Plus › Envoyer une idée ou un problème</b> envoie ce que vous écrivez à un formulaire Google, avec la
+      version de Field, sa langue et Windows ou Mac. Votre adresse courriel est envoyée seulement si vous l'écrivez,
+      pour qu'on puisse vous répondre. Seul le développeur les lit.</p>
+
+    <h2>Les nouvelles de Field</h2>
+    <p>Au démarrage, Field télécharge un petit fichier public sur GitHub avec les nouvelles de Field : la dernière
+      version, le lien Discord et de courts messages. Rien sur vous n'est envoyé. Comme pour n'importe quel site,
+      GitHub peut voir l'adresse Internet de votre ordinateur quand le fichier est téléchargé.</p>
+
+    <h2>Obsidian, Google et GitHub</h2>
+    <p>Field fonctionne avec <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian</a>, qui a sa
+      propre <a href="https://obsidian.md/privacy" target="_blank" rel="noopener">politique de confidentialité</a>.
+      Les formulaires et Drive appartiennent à Google (<a href="https://policies.google.com/privacy?hl=fr" target="_blank" rel="noopener">règles
+      de confidentialité de Google</a>); ce site et les nouvelles sont hébergés par GitHub
+      (<a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">déclaration
+      de confidentialité de GitHub</a>).</p>
+    <p>Ce site n'utilise ni témoins (cookies) ni traceurs. Il retient seulement la langue choisie, dans votre
+      navigateur.</p>
+
+    <h2>Qui voit vos données</h2>
+    <p>Seul le développeur voit les réponses aux formulaires (les statistiques et ce que vous envoyez). Elles ne
+      sont jamais vendues, louées ni partagées avec qui que ce soit, ni utilisées pour de la publicité. Field n'a
+      pas de publicité.</p>
+
+    <h2>Supprimer vos données</h2>
+    <ul>
+      <li>Vos notes et vos fichiers : ce sont vos fichiers, sur votre ordinateur. Supprimez-les quand vous voulez.</li>
+      <li>Vos groupes : supprimez les cartables dans votre Google Drive, et retirez Field des connexions de votre
+        compte Google.</li>
+      <li>Une idée ou un problème que vous avez envoyé : demandez-le sur le Discord de Field ou par courriel (plus bas), et ce sera
+        supprimé. Les statistiques ne peuvent pas être retrouvées, puisque rien ne les relie à vous.</li>
+    </ul>
+
+    <h2>Changements et contact</h2>
+    <p>Si cette politique change, la nouvelle version sera sur cette page, avec sa date en haut. Des questions?
+      Posez-les dans <b>#questions</b> sur <a data-discord href="https://discord.gg/wEbPdCSRbU">le Discord de
+      Field</a>, utilisez <b>Plus › Envoyer une idée ou un problème</b> dans Field, ou écrivez à
+      <a href="mailto:fieldprogram01@gmail.com">fieldprogram01@gmail.com</a>.</p>
+  </main>
+
+  <footer>
+    <a href="./"><span lang="en">Back to Field</span><span lang="fr">Retour à Field</span></a>
+    · <a data-discord href="https://discord.gg/wEbPdCSRbU">Discord</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function setLang(l) {
+    root.setAttribute("data-lang", l);
+    root.setAttribute("lang", l);
+    document.title = l === "fr" ? "Field : politique de confidentialité" : "Field: privacy policy";
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("field-lang"); } catch (e) {}
+  setLang(saved || ((navigator.language || "").toLowerCase().indexOf("fr") === 0 ? "fr" : "en"));
+  document.getElementById("lang").addEventListener("click", function () {
+    var l = root.getAttribute("data-lang") === "fr" ? "en" : "fr";
+    setLang(l);
+    try { localStorage.setItem("field-lang", l); } catch (e) {}
+  });
+
+  // the Discord link comes from Field's news, like on the landing page
+  fetch("https://gist.githubusercontent.com/fieldprogram01-gif/97a0038e2ff89ab4e410e23e7ee7b77e/raw/field-news.json?t=" + Date.now())
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (news) {
+      if (news && /^https:\/\/(discord\.gg|discord\.com\/invite)\/[\w-]+$/.test(news.discord || ""))
+        document.querySelectorAll("[data-discord]").forEach(function (a) { a.href = news.discord; });
+    })
+    .catch(function () {});
+})();
+</script>
+</body>
+</html>
